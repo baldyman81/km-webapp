@@ -1,8 +1,9 @@
 <script>
 	import Tabs from "./components/tabs.svelte";
-	import { itemsFromStore, itemsFiltered } from "./itemstore.js";
+	import { itemsFromStore, itemsFiltered, publishedItemsFromStore } from "./itemstore.js";
 	import ItemCard from "../src/components/ItemCard.svelte";
 	import FlaggedCards from "./components/FlaggedCards.svelte";
+	import PublishedItems from "./components/PublishedItems.svelte";
 
 	let tabItems = [
 		{ label: "Briefs", value: 1 },
@@ -13,6 +14,7 @@
 	let items = itemsFromStore;
 	let input = "";
 	let itemsF = itemsFiltered;
+	let publications = publishedItemsFromStore;
 
 
 	function addItem() {
@@ -28,19 +30,14 @@
 		];
 	  input = "";
 	}
-	function handleEditing(event) {
-		console.log("Editing...");
-	}
 
-	function editItem() {
-		console.log("editing")
-	}
-  
-	function removeItem(id) {
-	  const index = items.findIndex(item => item.id === id);
-	  items.splice(index, 1);
-	  items = items;
-	}
+  function publishItems() {
+	array.forEach(element => {
+		
+	});
+	
+  }
+	
   </script>
   
   <svelte:head>
@@ -63,6 +60,13 @@
 				<i class="fas fa-plus"></i>
 			  </span>
 			</button>
+			{#if 2 === currentTab}
+			<button class="button" on:click={publishItems}>
+				<span class="icon is-small">
+				<i class="fas fa-bullhorn"></i>
+				</span>
+			</button>
+			  {/if}
 		  </div>
 		</form>
 		<Tabs bind:activeTabValue={currentTab} tabItems={tabItems} />
@@ -80,7 +84,7 @@
 		{/if}
 		
 		{#if 2 === currentTab}
-			<h3>Hello</h3>
+			
 			<div class="list-container">
 				{#each itemsF as item (item.id)}
 				<ItemCard item={item}/>
@@ -89,7 +93,12 @@
 		{/if}
 		
 		{#if 3 === currentTab}
-		  <h3>Tab 3 content</h3>
+
+			<div class="list-container">
+				{#each publications as publication (publication.id)}
+				<PublishedItems publication={publication}/>
+				{/each}
+			</div>
 		{/if}
 		
 	  </div>

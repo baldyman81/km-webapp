@@ -2,7 +2,7 @@
   import { createEventDispatcher, tick } from "svelte";
   const dispatch = createEventDispatcher();
   let isEditMode = false;
-  let isSetToPublish = false;
+  let isSetToPublish;
   let description;
   let textareaEl;
   export let item;
@@ -22,7 +22,9 @@
   }
   
 	function publishItem(id) {
-	  item.publish != item.publish;
+	  if (item.publish == true) {
+      item.publish = false;
+    } else item.publish = true;
     isSetToPublish = item.publish;
     console.log(item.publish);
 	}
@@ -59,7 +61,7 @@
       <nav class="level is-mobile">
         <div class="level-left">
           <p class="buttons">
-            {#if isSetToPublish}
+            {#if item.publish}
             <button class="button is-small" on:click={publishItem(item.id)}>
               <span class="icon is-small">
                 <i class="fas fa-bullhorn"></i>
