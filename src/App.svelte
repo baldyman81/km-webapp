@@ -1,23 +1,35 @@
 <script>
-	import { slide } from "svelte/transition";
-	import { elasticInOut } from "svelte/easing";
-	import { itemsFromStore } from "./itemstore.js";
-  
+	import Tabs from "./components/tabs.svelte";
+	import { itemsFromStore, itemsFiltered } from "./itemstore.js";
+	import ItemCard from "../src/components/ItemCard.svelte";
+	import FlaggedCards from "./components/FlaggedCards.svelte";
+
+	let tabItems = [
+		{ label: "Briefs", value: 1 },
+		{ label: "Flagged for Publication", value: 2 },
+		{ label: "Published", value: 3 }
+	];
+	let currentTab;
 	let items = itemsFromStore;
 	let input = "";
-  
+	let itemsF = itemsFiltered;
+
+
 	function addItem() {
 	  if (input)
 		items = [
 		  ...items,
 		  {
-			text: input,
+			description: input,
 			id: Math.random()
 			  .toString(36)
 			  .substr(2, 9)
 		  }
 		];
 	  input = "";
+	}
+	function handleEditing(event) {
+		console.log("Editing...");
 	}
 
 	function editItem() {
@@ -35,7 +47,8 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"/>
 	<script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </svelte:head>
-  
+
+
   <main class="container is-fluid">
 	<div class="columns is-centered is-vcentered is-mobile">
 	  <div class="column is-narrow" style="width: 70%">
@@ -52,28 +65,33 @@
 			</button>
 		  </div>
 		</form>
-		<ul class:list={items.length > 0}>
-		  {#each items as item (item.id)}
-			<li class="list-item" transition:slide="{{duration: 300, easing: elasticInOut}}">
-			  <div class="is-flex" style="align-items: center">
-				<span class="is-pulled-left">{item.name}</span>
-				<div style="flex: 1"></div>
-				<button class="button is-text is-pulled-right is-small" on:click={()=> editItem(item.id)}>
-					<span class="icon">
-					  <i class="fas fa-pen"></i>
-					</span>
-				  </button>
-				<button class="button is-text is-pulled-right is-small" on:click={()=> removeItem(item.id)}>
-				  <span class="icon">
-					<i class="fas fa-check"></i>
-				  </span>
-				</button>
-			  </div>
-			</li>
-		  {:else}
-			<li class="has-text-centered" transition:slide="{{delay: 600, duration: 300, easing: elasticInOut}}">Nothing here!</li>
-		  {/each}
-		</ul>
+		<Tabs bind:activeTabValue={currentTab} tabItems={tabItems} />
+
+		<code class="language-text"></code>
+		
+		{#if 1 === currentTab}
+		  
+			<div class="list-container">
+				{#each items as item (item.id)}
+				<ItemCard item={item}/>
+				
+				{/each}
+			</div>
+		{/if}
+		
+		{#if 2 === currentTab}
+			<h3>Hello</h3>
+			<div class="list-container">
+				{#each itemsF as item (item.id)}
+				<ItemCard item={item}/>
+				{/each}
+			</div>
+		{/if}
+		
+		{#if 3 === currentTab}
+		  <h3>Tab 3 content</h3>
+		{/if}
+		
 	  </div>
 	</div>
   </main>

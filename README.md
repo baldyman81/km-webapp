@@ -6,10 +6,10 @@ This sample web app is built using Svelte and is designed to be used by a team t
 
 * [x] - Build simple data entry interface
 * [x] - Build simple datastore to be used in place of an API call or database later
-* [] - Create separate view for Briefs to be published
+* [x] - Create separate view for Briefs to be published
 * [] - Create way to publish and unpublish items
 * [] - Create Reporting view
-* [] - Create way to 
+* [x] - Create way to edit items
 * [] - Item 1
 
 # svelte app
