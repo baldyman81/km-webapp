@@ -8,10 +8,18 @@ This sample web app is built using Svelte and is designed to be used by a team t
 * [x] - Build simple datastore to be used in place of an API call or database later
 * [x] - Create separate view for Briefs to be published
 * [x] - Create way to flag items for publication
-* [] - Create way to publish items
+* [] - Create way to publish items (need to construct array with tag and description, then create new object with unique name using date)
+* [] - integrate permanent data store (database)
+* [] - Create way to tag items
+* [] - Create way to modify tags on existing items
 * [] - Create Reporting view
+* [] - Create way to delete item
+* [] - Validate base functionality works (add, modify, delete items)
 * [x] - Create way to edit items
-* [] - Item 1
+* [] - How to integrate into SSO
+* [] - Create way to provide feedback on items
+* [] - Handle multiple users editing the same item at the same time
+* [] - How to send email (either of new items or published reports)
 
 # svelte app
 

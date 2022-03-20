@@ -44,4 +44,3 @@ export const publishedItemsFromStore = [{
 export let itemsFiltered = itemsFromStore.filter(item => item.publish)
 
 export let itemsFilPublished = itemsFromStore.filter(item => item.published)
-
