@@ -31,6 +31,8 @@
 
   function deleteItem(id) {
       console.log("Deleted");
+      item.deleted = true;
+      console.log(item);
     }
 
 </script>
@@ -103,7 +105,7 @@
       </nav>
     </div>
     <div class="media-right">
-      <button class="delete"></button>
+      <button class="delete" on:click={deleteItem(item.id)}></button>
     </div>
   </article>
 

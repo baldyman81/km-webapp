@@ -4,6 +4,7 @@
     itemsFromStore,
     itemsFiltered,
     publishedItemsFromStore,
+    itemsNotDeleted,
   } from "./itemstore.js";
   import ItemCard from "../src/components/ItemCard.svelte";
   import PublishedItems from "./components/PublishedItems.svelte";
@@ -14,7 +15,7 @@
     { label: "Published", value: 3 },
   ];
   let currentTab;
-  let items = itemsFromStore;
+  let items = itemsNotDeleted;
   let input = "";
   let itemsF = itemsFiltered;
   let publications = publishedItemsFromStore;

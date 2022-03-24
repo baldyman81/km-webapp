@@ -5,25 +5,29 @@ export const itemsFromStore = [{
     "id": "12",
     "tag": "Positive",
     "publish": true,
-    "published": false
+    "published": false,
+    "deleted": false
 }, {
     "description": "A random item",
     "id": "15",
     "tag": "Negative",
     "publish": false,
-    "published": false
+    "published": false,
+    "deleted": false
 }, {
     "description": "Another random item",
     "id": "11",
     "tag": "Recognition",
     "publish": true,
-    "published": false
+    "published": false,
+    "deleted": false
 }, {
     "description": "Some random story that I heard about included an ogre and a donkey",
     "id": "17",
     "tag": "Positive",
     "publish": false,
-    "published": false
+    "published": false,
+    "deleted": true
 }];
 
 export const publishedItemsFromStore = [{
@@ -49,6 +53,8 @@ export const publishedItemsFromStore = [{
     ]
     }
 ];
+
+export let itemsNotDeleted = itemsFromStore.filter(item => !item.deleted);
 
 export let itemsFiltered = itemsFromStore.filter(item => item.publish);
 
