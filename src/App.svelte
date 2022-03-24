@@ -6,7 +6,6 @@
     publishedItemsFromStore,
   } from "./itemstore.js";
   import ItemCard from "../src/components/ItemCard.svelte";
-  import FlaggedCards from "./components/FlaggedCards.svelte";
   import PublishedItems from "./components/PublishedItems.svelte";
 
   let tabItems = [
@@ -19,7 +18,6 @@
   let input = "";
   let itemsF = itemsFiltered;
   let publications = publishedItemsFromStore;
-  let tempArray = [];
 
   function addItem() {
     if (input)
@@ -34,14 +32,10 @@
   }
 
   function publishItems() {
-    tempArray = [];
-	itemsF = itemsFiltered;
-    for (let index = 0; index < itemsF.length; index++) {
-      const element = itemsF[index].description;
-      tempArray.push(element);
-      console.log(tempArray);
+    itemsF = itemsFiltered;
+    publications = publishedItemsFromStore;
+
     }
-  }
 </script>
 
 <svelte:head>
@@ -107,7 +101,7 @@
 
       {#if 3 === currentTab}
         <div class="list-container">
-          {#each publications as publication (publication.id)}
+          {#each publications as publication (publication.tag)}
             <PublishedItems {publication} />
           {/each}
         </div>

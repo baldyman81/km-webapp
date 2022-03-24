@@ -28,19 +28,28 @@ export const itemsFromStore = [{
 
 export const publishedItemsFromStore = [{
     "tag": "Positive",
-    "description1": "Sample good news story 1",
-    "description2": "Sample good news story 2",
-    "description3": "Sample good news story 3",
-    "description4": "Sample good news story 4",
-    "description5": "Sample good news story 5",
-    "tagNeg": "Negative",
-    "negDescription1": "A sample not so good new story 1",
-    "negDescription2": "A sample not so good new story 2",
-    "tagRec": "Recognition",
-    "recDescription1": "Some feedback about an excellent team 1",
-    "recDescription2": "Some feedback about an excellent team 2"
-}]
+    "items": [
+        "A positve news story.",
+        "Another positive news story",
+        "Something really cool!"
+    ]
+    },{
+    "tag": "Negative",
+    "items": [
+        "A negative news story.",
+        "Another negative news story",
+        "Something really bad!"
+    ]
+    },{
+    "tag": "Recognition",
+    "items": [
+        "Dave was awesome and fixed the thing.",
+        "Anna was terrible. She took 5 mins to solve my problem",
+        "My computer something something..."
+    ]
+    }
+];
 
-export let itemsFiltered = itemsFromStore.filter(item => item.publish)
+export let itemsFiltered = itemsFromStore.filter(item => item.publish);
 
-export let itemsFilPublished = itemsFromStore.filter(item => item.published)
+export let itemsFilPublished = itemsFromStore.filter(item => item.published);
